@@ -10,8 +10,7 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private String descriprion;
+    private String description;
     private Integer prepTime;
     private Integer cookTime;
     private Integer servings;
@@ -19,14 +18,14 @@ public class Recipe {
     private String url;
     private String directions;
 
-    @Enumerated(value = EnumType.STRING)
-    private Difficulty difficulty;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
     @Lob
     private Byte[] image;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
@@ -39,12 +38,12 @@ public class Recipe {
         this.id = id;
     }
 
-    public String getDescriprion() {
-        return descriprion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriprion(String descriprion) {
-        this.descriprion = descriprion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getPrepTime() {
