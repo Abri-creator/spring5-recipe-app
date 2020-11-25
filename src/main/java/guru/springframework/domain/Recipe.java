@@ -117,6 +117,15 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        //this is where we build the association; encapsulates logic
+        notes.setRecipe(this);
+    }
+    //this is a bidirectional method
+    //we don't have to pass the Recipe to the constructor
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
     }
 
     public Set<Ingredient> getIngredients() {
